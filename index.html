@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="web, developer, development, to do, todo, list, jesus, leal" />
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <script src="./app.js" defer></script>
+    <title>ToDo List</title>
+    <link rel="icon" href="./images/todo-svgrepo-com.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <div class="body">
+
+        <!-- HEADER BEGIN -->
+        <header>
+            <nav class="nav">
+                <img class="nav__logo" src="./images/minijesus.jpg" alt="">
+                <h1 class="nav__title">ToDo List</h1>
+                <div class="nav__filter">
+                    <p>Filter:</p>
+                    <input class="nav__input" type="text" placeholder="Texto por el que filtrar tareas">
+                </div>
+                <div class="iconGroup">
+                    <a href="https://www.linkedin.com/in/jesusleal/" title="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="https://www.instagram.com/lealp22/" title="Instagram" target="_blank">
+                        <i class="fab fa-instagram-square fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/lealp22" title="Github" target="_blank">
+                        <i class="fab fa-github-square fa-2x"></i>
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <!-- HEADER END -->
+
+        <!-- MAIN BEGIN -->
+        <main class="main">
+            <article class="article">
+                <section class="section">
+
+                    <div class="dashboard" id="dashboard">
+
+                        <div class="dashboard__new_task">
+                            <label for="task" class="form__label">Nueva Tarea</label>
+                            <input required type="text" name="task" pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\s]{4,200}"
+                                placeholder="Introduzca la tarea a incluir en la lista" class="dashboard__input">
+                            <span class="dashboard__add"><i class="fas fa-plus-circle"></i></span>
+                        </div>
+
+                        <div class="dashboard__list">
+
+<!--                             <div class="dashboard__item">
+                                <span class="dashboard__text"></span>
+                                <div class="dashboard__done"><i class="fas fa-check-circle"></i></div>
+                                <div class="dashboard__del"></div><i class="fas fa-minus-circle"></i>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Here will be include the game dshboard-->
+                </section>
+            </article>
+        </main>
+        <!-- MAIN END -->
+
+    </div>
+</body>
+
+</html>

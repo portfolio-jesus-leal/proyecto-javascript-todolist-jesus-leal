@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+// Custom Properties CSS
+// Variables definition
+$font-main: 'Work Sans',
+sans-serif;
+$font-size: 1.2rem;
+$main-color                 : #eceae4;
+$check-color                : #4caf50;
+$border-radius              : 1.5rem;
+$nav-font-color             : white;
+$circle-border-radius       : 50%;
+$header-background-color    : gray;
+// Variables for screen size control
+$mobile_breakpoint          : 576px;
+$tablet_breakpoint          : 768px;
+$tablet_landscape_breakpoint: 992px;
+$desktop_breakpoint         : 1200px;
+$desktop_xl_breakpoint      : 1600px;
+
+@mixin button {
+    font-size: 1rem;
+}
+
+// Mixin for media query
+
+@mixin mobile {
+    @media only screen and (max-width: #{$mobile_breakpoint}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (max-width: #{$tablet_breakpoint}) {
+        @content;
+    }
+}
+
+a {
+    text-decoration: none;
+    color          : inherit;
+}
+
+.section {
+    padding         : 20px;
+    background-color: $main-color;
+
+    @include mobile {
+        padding: 10px;
+    }
+}
+
+.body {
+
+    width      : 95%;
+    margin     : auto;
+    font-family: $font-main;
+
+    @include tablet {
+        width: 100%;
+    }
+}
+
+.nav {
+    color              : $nav-font-color;
+    background-color   : $header-background-color;
+    display            : flex;
+    flex-direction     : row;
+    justify-content    : space-around;
+    align-items        : center;
+    transition-duration: 0.2s;
+
+    &__logo {
+        border-radius: $circle-border-radius;
+        width        : 5vw;
+        box-shadow   : 0.3rem 0.3rem 0.3rem 0 #000;
+
+        @include mobile {
+            max-height: 3rem;
+        }
+    }
+
+    &__title {
+        font-size  : 3rem;
+        margin     : 1rem;
+        padding    : 0 2rem;
+        text-align : center;
+        text-shadow: 0.3rem 0.3rem 0.3rem #000;
+
+        @include mobile {
+            font-size: 1.5rem;
+            margin   : 0.5rem;
+            padding  : 0 1rem;
+        }
+
+    }
+
+    &__logo:hover,
+    &__title:hover {
+        transform: scale(120%);
+    }
+
+    &__filter {
+        flex-direction: column;
+
+        &>p {
+            margin: 0.8rem 0 0.2rem 0;
+        }
+    }
+
+    &__input {
+        border-radius   : $border-radius;
+        font-family: $font-main;
+    }
+
+    &_iconGroup {
+        display        : flex;
+        justify-content: space-around;
+    }
+}
+
+.btn {
+    @include button;
+    padding: 0.8rem 1.6rem;
+    display: inline;
+
+    @include mobile {
+        padding: 0;
+    }
+
+    &:hover {
+        transform: scale(115%);
+    }
+}
+
+.dashboard {
+
+    display       : flex;
+    flex-direction: column;
+    font-size     : $font-size;
+
+    &__new_task {
+        display       : flex;
+        flex-direction: row;
+        border        : 1px solid black;
+        border-radius : $border-radius;
+        padding       : 0.5rem 0;
+    }
+
+    &__new_task>label {
+        margin: 0 1rem;
+    }
+
+    &__input {
+        font-family: $font-main;
+        font-size     : $font-size;
+        border-radius   : $border-radius;
+    }
+
+    &__list {
+        flex-direction: column;
+    }
+
+    &__item {
+        flex-direction  : row;
+
+
+        width: 85vw;
+    }
+
+    &__text {
+        margin: 0 1rem;
+        width : 80vw;
+        background-color: rgb(231, 231, 96);
+        border          : 1px solid black;
+        border-radius   : $border-radius;
+        padding         : 0.5rem 0;
+        margin-top      : 0.3rem;
+    }
+
+    &__text--checked {
+        background-color: lightgreen;
+    }
+
+    &__done {
+        color: green;
+    }
+
+    &__del {
+        color: red;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
