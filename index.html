@@ -21,13 +21,9 @@
         <!-- HEADER BEGIN -->
         <header>
             <nav class="nav">
-                <img class="nav__logo" src="./images/minijesus.jpg" alt="">
+                <!-- <img class="nav__logo" src="./images/minijesus.jpg" alt=""> -->
                 <h1 class="nav__title">ToDo List</h1>
-                <div class="nav__filter">
-                    <p>Filter:</p>
-                    <input class="nav__input" type="text" placeholder="Texto por el que filtrar tareas">
-                </div>
-                <div class="iconGroup">
+                <div class="nav__icon-group">
                     <a href="https://www.linkedin.com/in/jesusleal/" title="LinkedIn" target="_blank">
                         <i class="fab fa-linkedin fa-2x"></i>
                     </a>
@@ -37,6 +33,13 @@
                     <a href="https://github.com/lealp22" title="Github" target="_blank">
                         <i class="fab fa-github-square fa-2x"></i>
                     </a>
+                </div>
+                <div class="nav__filter">
+                    <p>Filter:</p>
+                    <div class="nav__input-group">
+                    <input class="nav__input" type="text" placeholder="Texto para filtrar tareas">
+                    <span class="nav__init-filter"><i class="fas fa-times-circle"></i></span>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -50,7 +53,7 @@
                     <div class="dashboard" id="dashboard">
 
                         <div class="dashboard__new_task">
-                            <label for="task" class="form__label">Nueva Tarea</label>
+                            <label for="task" class="form__label"><strong>Nueva Tarea</strong></label>
                             <input required type="text" name="task" pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\s]{4,200}"
                                 placeholder="Introduzca la tarea a incluir en la lista" class="dashboard__input">
                             <span class="dashboard__add"><i class="fas fa-plus-circle"></i></span>

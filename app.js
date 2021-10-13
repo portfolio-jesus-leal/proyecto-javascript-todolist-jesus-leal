@@ -20,7 +20,7 @@ const init = () => {
 // Prepare events
 //
 const prepareEvents = () => {
-  console.log('prepareAddButton');
+  console.log('prepareEvents');
 
   document
     .querySelector('.dashboard__add')
@@ -28,7 +28,9 @@ const prepareEvents = () => {
 
   document.querySelector('.nav__input').addEventListener('input', applyFilter);
 
-  // Get the input field
+  document.querySelector('.nav__init-filter').addEventListener('click', clickInitFilter);
+
+  // Catch a key pressed
   document.querySelector('.dashboard__input').addEventListener("keyup", addTaskWithEnter);
 
 }
@@ -52,16 +54,24 @@ const applyFilter = (event) => {
   console.log('applyFilter');
   console.log(event.target.value);
 
-  const text = event.target.value;
+  // Removes all tasks from the dashboard
+  document.querySelector('.dashboard__list').innerHTML = '';
 
-  cleanDashboard();
   if (event.target.value.length > 0) {
     const list = listTasks
-      .filter( (elem) => {return elem.text.includes(event.target.value)} )
+      .filter( (elem) => {return elem.text.toLowerCase().includes(event.target.value.toLowerCase())} )
       .forEach((elem) => {displayTask(elem) } );
   } else {
     displayAllTasks();
   }
+}
+
+const clickInitFilter = () => {
+  console.log('clickInitFilter');
+  
+  document.querySelector('.nav__input').value = '';
+  document.querySelector('.dashboard__list').innerHTML = '';
+  displayAllTasks();
 }
 
 //
@@ -103,6 +113,7 @@ const displayTask = (newTask) => {
 
   const $$task = document.createElement("div");
   $$task.className = "dashboard__item";
+  $$task.id = `l${newTask.id}`;
 
   const $$span1 = document.createElement("span");
   $$span1.id = `t${newTask.id}`;
@@ -122,12 +133,19 @@ const displayTask = (newTask) => {
   const $$span3 = document.createElement("span");
   $$span3.className = "dashboard__del";
   $$span3.id = `s${newTask.id}`;
-  $$span3.innerHTML = `<i class="fas fa-minus-circle" id='i${newTask.id}'></i>`;
+  $$span3.innerHTML = `<i class="fas fa-times-circle" id='i${newTask.id}'></i>`;
   $$span3.addEventListener("click", clickDelTask);
+
+  const $$span4 = document.createElement("span");
+  $$span4.className = "dashboard__edit";
+  $$span4.id = `s${newTask.id}`;
+  $$span4.innerHTML = `<i class="fas fa-edit" id='i${newTask.id}'></i>`;
+  $$span4.addEventListener("click", clickEditTask);
 
   $$task.appendChild($$span1);
   $$task.appendChild($$span2);
   $$task.appendChild($$span3);
+  $$task.appendChild($$span4);
   $$list.appendChild($$task);
 };
 
@@ -156,15 +174,42 @@ const clickDelTask = (event) => {
   console.log(event);
 
   const taskId = event.path[1].id.substring(1);
-  document.querySelector(`#t${taskId}`).remove();
+  deleteTask(taskId);
+};
 
+//
+// Click on a task edit button
+// Move the content to the new_task field, delete the task and remove it from the dashboard
+//
+const clickEditTask = (event) => {
+  console.log("clickEditTask");
+  console.log(event);
+  
+  const taskId = event.path[1].id.substring(1);
+  document.querySelector(".dashboard__input").value = listTasks[searchListTasks(taskId)].text;
+  deleteTask(taskId);
+}
+
+//
+// Delete a task by id
+//
+const deleteTask = (taskId) => {
+  console.log('deleteTask');
+  
+  // Remove the task from the dashboard
+  const $$task = document.querySelector(`#l${taskId}`)
+  $$task.remove();
+  
+  // Delete the task
   listTasks.splice(searchListTasks(taskId), 1);
-
+  
   if (listTasks.length == 0) {
     indexTasks = 0;
   }
-  setLocalStorage();
-};
+  
+  // Update localStorage
+  setLocalStorage();  
+}
 
 //
 // Search by id in listTasks array
@@ -211,17 +256,6 @@ const displayAllTasks = () => {
   listTasks.forEach((element) => {
     displayTask(element);
   });
-};
-
-//
-// Removes all tasks from the dashboard
-//
-const cleanDashboard = () => {
-  const list = document.querySelector(".dashboard__list");
-
-  while (list.hasChildNodes()) {
-    list.removeChild(list.firstChild);
-  }
 };
 
 //

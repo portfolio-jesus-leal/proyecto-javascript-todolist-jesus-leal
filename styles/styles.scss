@@ -1,13 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Lato&display=swap');
 
 // Custom Properties CSS
 // Variables definition
-$font-main: 'Work Sans',
-sans-serif;
-$font-size: 1.2rem;
+//$font-main: 'Work Sans', sans-serif;
+$font-title: 'Fascinate Inline', cursive;
+$font-main: 'Lato', sans-serif;
+$font-size                  : 1.2rem;
+$font-size-mobile           : 1rem;
+$btn-size                   : 2rem;
+$btn-size-mobile            : 1.2rem;
 $main-color                 : #eceae4;
 $check-color                : #4caf50;
-$border-radius              : 1.5rem;
+$border-radius              : 0.5em;
 $nav-font-color             : white;
 $circle-border-radius       : 50%;
 $header-background-color    : gray;
@@ -66,21 +71,23 @@ a {
     background-color   : $header-background-color;
     display            : flex;
     flex-direction     : row;
+    flex-wrap          : wrap;
     justify-content    : space-around;
     align-items        : center;
     transition-duration: 0.2s;
 
     &__logo {
         border-radius: $circle-border-radius;
-        width        : 5vw;
+        width        : 3%;
         box-shadow   : 0.3rem 0.3rem 0.3rem 0 #000;
 
         @include mobile {
-            max-height: 3rem;
+            display: none;
         }
     }
 
     &__title {
+        font-family: $font-title;
         font-size  : 3rem;
         margin     : 1rem;
         padding    : 0 2rem;
@@ -106,16 +113,47 @@ a {
         &>p {
             margin: 0.8rem 0 0.2rem 0;
         }
+
+        @include mobile {
+            width  : 100%;
+            display: flex;
+            margin : 0 2rem 0.8rem 2rem;
+        }
+    }
+
+    &__input-group {
+        display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
     }
 
     &__input {
-        border-radius   : $border-radius;
-        font-family: $font-main;
+        border-radius: $border-radius;
+        font-family  : $font-main;
+        width: 90%;
     }
 
-    &_iconGroup {
-        display        : flex;
-        justify-content: space-around;
+    &__init-filter {
+        margin: 0 0.3rem;
+    }
+
+    &__icon-group {
+
+        @include mobile {
+            margin: 1rem 0 0.5rem 0;
+        }
+    }
+
+    &__icon-group>a {
+        margin-right: 0.5rem;
+
+        @include mobile {
+            margin-right: 0.2rem;
+        }
+    }
+
+    &__icon-group:hover {
+        transform: scale(120%);
     }
 }
 
@@ -139,22 +177,55 @@ a {
     flex-direction: column;
     font-size     : $font-size;
 
+    @include mobile {
+        font-size: $font-size-mobile;
+    }
+
     &__new_task {
-        display       : flex;
-        flex-direction: row;
-        border        : 1px solid black;
-        border-radius : $border-radius;
-        padding       : 0.5rem 0;
+        display        : flex;
+        flex-direction : row;
+        border         : 1px solid black;
+        border-radius  : $border-radius;
+        padding        : 0.5rem 0;
+        align-items    : center;
+        justify-content: center;
+
+        @include mobile {
+            display       : flow-root;
+            flex-direction: column;
+        }
     }
 
     &__new_task>label {
         margin: 0 1rem;
+
+        @include mobile {
+            width: 80%;
+        }
     }
 
     &__input {
-        font-family: $font-main;
-        font-size     : $font-size;
-        border-radius   : $border-radius;
+        font-family  : $font-main;
+        font-size    : $font-size;
+        border-radius: $border-radius;
+        width        : 65vw;
+        padding      : 0.8rem 0.5rem;
+
+        @include mobile {
+            margin-left: 0.5rem;
+            width      : 80%;
+            font-size  : $font-size-mobile;
+        }
+    }
+
+    &__add {
+        margin   : 0 1rem;
+        font-size: $btn-size;
+
+        @include mobile {
+            margin   : auto;
+            font-size: $btn-size-mobile;
+        }
     }
 
     &__list {
@@ -162,20 +233,32 @@ a {
     }
 
     &__item {
-        flex-direction  : row;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top    : 0.3rem;
 
-
-        width: 85vw;
+        @include mobile {
+            flex-wrap: wrap;
+        }
     }
 
     &__text {
-        margin: 0 1rem;
-        width : 80vw;
+        display         : inline-block;
+        width           : 90%;
+        //margin-right: 0 1rem;
         background-color: rgb(231, 231, 96);
         border          : 1px solid black;
         border-radius   : $border-radius;
-        padding         : 0.5rem 0;
-        margin-top      : 0.3rem;
+        padding         : 0.5rem 0.5rem 0.5rem 1.5rem;
+
+        @include tablet {
+            padding: 0.3rem;
+        }
+
+        @include mobile {
+            width: 100%;
+        }
     }
 
     &__text--checked {
@@ -183,11 +266,36 @@ a {
     }
 
     &__done {
-        color: green;
+        color      : green;
+        font-size  : $btn-size;
+        margin-left: 0.5rem;
+
+        @include mobile {
+            margin-left: 0.3rem;
+            font-size  : $btn-size-mobile;
+        }
     }
 
     &__del {
-        color: red;
+        color    : red;
+        font-size: $btn-size;
+        margin   : 0 0.5rem;
+
+        @include mobile {
+            margin   : 0 0.3rem;
+            font-size: $btn-size-mobile;
+        }
+    }
+
+    &__edit {
+        //color    : blue;
+        font-size: $btn-size;
+        margin   : 0 0.5rem;
+
+        @include mobile {
+            margin   : 0 0.3rem;
+            font-size: $btn-size-mobile;
+        }
     }
 }
 

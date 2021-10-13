@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Lato&display=swap");
 a {
   text-decoration: none;
   color: inherit;
@@ -18,7 +18,7 @@ a {
 .body {
   width: 95%;
   margin: auto;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
@@ -37,6 +37,8 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -48,18 +50,19 @@ a {
 
 .nav__logo {
   border-radius: 50%;
-  width: 5vw;
+  width: 3%;
   -webkit-box-shadow: 0.3rem 0.3rem 0.3rem 0 #000;
           box-shadow: 0.3rem 0.3rem 0.3rem 0 #000;
 }
 
 @media only screen and (max-width: 576px) {
   .nav__logo {
-    max-height: 3rem;
+    display: none;
   }
 }
 
 .nav__title {
+  font-family: "Fascinate Inline", cursive;
   font-size: 3rem;
   margin: 1rem;
   padding: 0 2rem;
@@ -91,17 +94,58 @@ a {
   margin: 0.8rem 0 0.2rem 0;
 }
 
-.nav__input {
-  border-radius: 1.5rem;
-  font-family: "Work Sans", sans-serif;
+@media only screen and (max-width: 576px) {
+  .nav__filter {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 2rem 0.8rem 2rem;
+  }
 }
 
-.nav_iconGroup {
+.nav__input-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.nav__input {
+  border-radius: 0.5em;
+  font-family: "Lato", sans-serif;
+  width: 90%;
+}
+
+.nav__init-filter {
+  margin: 0 0.3rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .nav__icon-group {
+    margin: 1rem 0 0.5rem 0;
+  }
+}
+
+.nav__icon-group > a {
+  margin-right: 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .nav__icon-group > a {
+    margin-right: 0.2rem;
+  }
+}
+
+.nav__icon-group:hover {
+  -webkit-transform: scale(120%);
+          transform: scale(120%);
 }
 
 .btn {
@@ -132,6 +176,12 @@ a {
   font-size: 1.2rem;
 }
 
+@media only screen and (max-width: 576px) {
+  .dashboard {
+    font-size: 1rem;
+  }
+}
+
 .dashboard__new_task {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,18 +191,62 @@ a {
       -ms-flex-direction: row;
           flex-direction: row;
   border: 1px solid black;
-  border-radius: 1.5rem;
+  border-radius: 0.5em;
   padding: 0.5rem 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__new_task {
+    display: flow-root;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .dashboard__new_task > label {
   margin: 0 1rem;
 }
 
+@media only screen and (max-width: 576px) {
+  .dashboard__new_task > label {
+    width: 80%;
+  }
+}
+
 .dashboard__input {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 1.2rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5em;
+  width: 65vw;
+  padding: 0.8rem 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__input {
+    margin-left: 0.5rem;
+    width: 80%;
+    font-size: 1rem;
+  }
+}
+
+.dashboard__add {
+  margin: 0 1rem;
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__add {
+    margin: auto;
+    font-size: 1.2rem;
+  }
 }
 
 .dashboard__list {
@@ -163,21 +257,45 @@ a {
 }
 
 .dashboard__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 85vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 0.3rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__item {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
 }
 
 .dashboard__text {
-  margin: 0 1rem;
-  width: 80vw;
+  display: inline-block;
+  width: 90%;
   background-color: #e7e760;
   border: 1px solid black;
-  border-radius: 1.5rem;
-  padding: 0.5rem 0;
-  margin-top: 0.3rem;
+  border-radius: 0.5em;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard__text {
+    padding: 0.3rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__text {
+    width: 100%;
+  }
 }
 
 .dashboard__text--checked {
@@ -186,10 +304,40 @@ a {
 
 .dashboard__done {
   color: green;
+  font-size: 2rem;
+  margin-left: 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__done {
+    margin-left: 0.3rem;
+    font-size: 1.2rem;
+  }
 }
 
 .dashboard__del {
   color: red;
+  font-size: 2rem;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__del {
+    margin: 0 0.3rem;
+    font-size: 1.2rem;
+  }
+}
+
+.dashboard__edit {
+  font-size: 2rem;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__edit {
+    margin: 0 0.3rem;
+    font-size: 1.2rem;
+  }
 }
 
 @-webkit-keyframes shake {
