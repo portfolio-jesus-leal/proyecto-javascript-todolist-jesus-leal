@@ -1,34 +1,30 @@
-//@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Lato&display=swap');
 
 // Custom Properties CSS
 // Variables definition
-//$font-main: 'Work Sans', sans-serif;
 $font-title: 'Fascinate Inline', cursive;
 $font-main: 'Lato', sans-serif;
-$font-size                  : 1.2rem;
-$font-size-mobile           : 1rem;
-$btn-size                   : 2rem;
-$btn-size-mobile            : 1.2rem;
-$main-color                 : #eceae4;
-$check-color                : #4caf50;
-$border-radius              : 0.5em;
-$nav-font-color             : white;
-$circle-border-radius       : 50%;
-$header-background-color    : gray;
+$font-size                   : 1.2rem;
+$font-size-mobile            : 1rem;
+$btn-size                    : 2rem;
+$btn-size-mobile             : 1.2rem;
+$main-color                  : #f0eae6;
+$check-color                 : #94f3a4;
+$task-color                  : #f3f3ae;
+$border-radius               : 0.5em;
+$nav-font-color              : white;
+$circle-border-radius        : 50%;
+$header-background-color     : #2d8e87;
 // Variables for screen size control
-$mobile_breakpoint          : 576px;
-$tablet_breakpoint          : 768px;
-$tablet_landscape_breakpoint: 992px;
-$desktop_breakpoint         : 1200px;
-$desktop_xl_breakpoint      : 1600px;
+$mobile_breakpoint           : 576px;
+$tablet_breakpoint           : 768px;
+$tablet_landscape_breakpoint : 992px;
+$desktop_breakpoint          : 1200px;
+$desktop_xl_breakpoint       : 1600px;
 
-@mixin button {
-    font-size: 1rem;
-}
-
+//
 // Mixin for media query
-
+//
 @mixin mobile {
     @media only screen and (max-width: #{$mobile_breakpoint}) {
         @content;
@@ -76,23 +72,13 @@ a {
     align-items        : center;
     transition-duration: 0.2s;
 
-    &__logo {
-        border-radius: $circle-border-radius;
-        width        : 3%;
-        box-shadow   : 0.3rem 0.3rem 0.3rem 0 #000;
-
-        @include mobile {
-            display: none;
-        }
-    }
-
     &__title {
-        font-family: $font-title;
-        font-size  : 3rem;
-        margin     : 1rem;
-        padding    : 0 2rem;
-        text-align : center;
-        text-shadow: 0.3rem 0.3rem 0.3rem #000;
+        font-family        : $font-title;
+        font-size          : 3rem;
+        margin             : 1rem;
+        padding            : 0 2rem;
+        text-align         : center;
+        text-shadow        : 0.3rem 0.3rem 0.3rem #000;
 
         @include mobile {
             font-size: 1.5rem;
@@ -102,9 +88,9 @@ a {
 
     }
 
-    &__logo:hover,
     &__title:hover {
-        transform: scale(120%);
+        animation                : shake 0.5s;
+        animation-iteration-count: infinite;        
     }
 
     &__filter {
@@ -122,15 +108,15 @@ a {
     }
 
     &__input-group {
-        display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
+        display        : flex;
+        justify-content: space-evenly;
+        flex-direction : row;
     }
 
     &__input {
         border-radius: $border-radius;
         font-family  : $font-main;
-        width: 90%;
+        width        : 90%;
     }
 
     &__init-filter {
@@ -138,6 +124,8 @@ a {
     }
 
     &__icon-group {
+
+        transition-duration: 0.3s;
 
         @include mobile {
             margin: 1rem 0 0.5rem 0;
@@ -157,20 +145,6 @@ a {
     }
 }
 
-.btn {
-    @include button;
-    padding: 0.8rem 1.6rem;
-    display: inline;
-
-    @include mobile {
-        padding: 0;
-    }
-
-    &:hover {
-        transform: scale(115%);
-    }
-}
-
 .dashboard {
 
     display       : flex;
@@ -184,9 +158,8 @@ a {
     &__new_task {
         display        : flex;
         flex-direction : row;
-        border         : 1px solid black;
         border-radius  : $border-radius;
-        padding        : 0.5rem 0;
+        padding        : 0.5rem 0 1rem 0;
         align-items    : center;
         justify-content: center;
 
@@ -219,8 +192,9 @@ a {
     }
 
     &__add {
-        margin   : 0 1rem;
-        font-size: $btn-size;
+        margin             : 0 1rem;
+        font-size          : $btn-size;
+        transition-duration: 0.3s;
 
         @include mobile {
             margin   : auto;
@@ -233,10 +207,10 @@ a {
     }
 
     &__item {
-        display: flex;
-        flex-direction: row;
+        display        : flex;
+        flex-direction : row;
         justify-content: space-between;
-        margin-top    : 0.3rem;
+        margin-top     : 0.3rem;
 
         @include mobile {
             flex-wrap: wrap;
@@ -244,13 +218,13 @@ a {
     }
 
     &__text {
-        display         : inline-block;
-        width           : 90%;
-        //margin-right: 0 1rem;
-        background-color: rgb(231, 231, 96);
-        border          : 1px solid black;
-        border-radius   : $border-radius;
-        padding         : 0.5rem 0.5rem 0.5rem 1.5rem;
+        display            : inline-block;
+        width              : 90%;
+        background-color   : $task-color;
+        border             : 1px solid black;
+        border-radius      : $border-radius;
+        padding            : 0.5rem 0.5rem 0.5rem 1.5rem;
+        transition-duration: 0.3s;
 
         @include tablet {
             padding: 0.3rem;
@@ -261,14 +235,19 @@ a {
         }
     }
 
+    &__text:hover {
+        transform: scale(103%);
+    }
+
     &__text--checked {
-        background-color: lightgreen;
+        background-color: $check-color;
     }
 
     &__done {
-        color      : green;
-        font-size  : $btn-size;
-        margin-left: 0.5rem;
+        color              : #2d8e87;
+        font-size          : $btn-size;
+        margin-left        : 0.5rem;
+        transition-duration: 0.3s;
 
         @include mobile {
             margin-left: 0.3rem;
@@ -277,9 +256,10 @@ a {
     }
 
     &__del {
-        color    : red;
-        font-size: $btn-size;
-        margin   : 0 0.5rem;
+        color              : red;
+        font-size          : $btn-size;
+        margin             : 0 0.5rem;
+        transition-duration: 0.3s;
 
         @include mobile {
             margin   : 0 0.3rem;
@@ -288,15 +268,23 @@ a {
     }
 
     &__edit {
-        //color    : blue;
-        font-size: $btn-size;
-        margin   : 0 0.5rem;
+        font-size          : $btn-size;
+        margin             : 0 0.5rem;
+        transition-duration: 0.3s;
 
         @include mobile {
             margin   : 0 0.3rem;
             font-size: $btn-size-mobile;
         }
     }
+
+    &__add:hover,
+    &__done:hover,
+    &__del:hover,
+    &__edit:hover {
+        transform: scale(120%);
+    }
+
 }
 
 @keyframes shake {

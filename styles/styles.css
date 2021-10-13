@@ -6,7 +6,7 @@ a {
 
 .section {
   padding: 20px;
-  background-color: #eceae4;
+  background-color: #f0eae6;
 }
 
 @media only screen and (max-width: 576px) {
@@ -29,7 +29,7 @@ a {
 
 .nav {
   color: white;
-  background-color: gray;
+  background-color: #2d8e87;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,19 +46,6 @@ a {
           align-items: center;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
-}
-
-.nav__logo {
-  border-radius: 50%;
-  width: 3%;
-  -webkit-box-shadow: 0.3rem 0.3rem 0.3rem 0 #000;
-          box-shadow: 0.3rem 0.3rem 0.3rem 0 #000;
-}
-
-@media only screen and (max-width: 576px) {
-  .nav__logo {
-    display: none;
-  }
 }
 
 .nav__title {
@@ -78,9 +65,11 @@ a {
   }
 }
 
-.nav__logo:hover, .nav__title:hover {
-  -webkit-transform: scale(120%);
-          transform: scale(120%);
+.nav__title:hover {
+  -webkit-animation: shake 0.5s;
+          animation: shake 0.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 .nav__filter {
@@ -127,6 +116,11 @@ a {
   margin: 0 0.3rem;
 }
 
+.nav__icon-group {
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
 @media only screen and (max-width: 576px) {
   .nav__icon-group {
     margin: 1rem 0 0.5rem 0;
@@ -146,23 +140,6 @@ a {
 .nav__icon-group:hover {
   -webkit-transform: scale(120%);
           transform: scale(120%);
-}
-
-.btn {
-  font-size: 1rem;
-  padding: 0.8rem 1.6rem;
-  display: inline;
-}
-
-@media only screen and (max-width: 576px) {
-  .btn {
-    padding: 0;
-  }
-}
-
-.btn:hover {
-  -webkit-transform: scale(115%);
-          transform: scale(115%);
 }
 
 .dashboard {
@@ -190,9 +167,8 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border: 1px solid black;
   border-radius: 0.5em;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 1rem 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -240,6 +216,8 @@ a {
 .dashboard__add {
   margin: 0 1rem;
   font-size: 2rem;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 
 @media only screen and (max-width: 576px) {
@@ -280,10 +258,12 @@ a {
 .dashboard__text {
   display: inline-block;
   width: 90%;
-  background-color: #e7e760;
+  background-color: #f3f3ae;
   border: 1px solid black;
   border-radius: 0.5em;
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 
 @media only screen and (max-width: 768px) {
@@ -298,14 +278,21 @@ a {
   }
 }
 
+.dashboard__text:hover {
+  -webkit-transform: scale(103%);
+          transform: scale(103%);
+}
+
 .dashboard__text--checked {
-  background-color: lightgreen;
+  background-color: #94f3a4;
 }
 
 .dashboard__done {
-  color: green;
+  color: #2d8e87;
   font-size: 2rem;
   margin-left: 0.5rem;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 
 @media only screen and (max-width: 576px) {
@@ -319,6 +306,8 @@ a {
   color: red;
   font-size: 2rem;
   margin: 0 0.5rem;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 
 @media only screen and (max-width: 576px) {
@@ -331,6 +320,8 @@ a {
 .dashboard__edit {
   font-size: 2rem;
   margin: 0 0.5rem;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 
 @media only screen and (max-width: 576px) {
@@ -338,6 +329,11 @@ a {
     margin: 0 0.3rem;
     font-size: 1.2rem;
   }
+}
+
+.dashboard__add:hover, .dashboard__done:hover, .dashboard__del:hover, .dashboard__edit:hover {
+  -webkit-transform: scale(120%);
+          transform: scale(120%);
 }
 
 @-webkit-keyframes shake {

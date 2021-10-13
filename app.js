@@ -20,26 +20,28 @@ const init = () => {
 // Prepare events
 //
 const prepareEvents = () => {
-  console.log('prepareEvents');
+  console.log("prepareEvents");
 
   document
-    .querySelector('.dashboard__add')
-    .addEventListener('click', clickAddButton);
+    .querySelector(".dashboard__add")
+    .addEventListener("click", clickAddButton);
 
-  document.querySelector('.nav__input').addEventListener('input', applyFilter);
+  document.querySelector(".nav__input").addEventListener("input", applyFilter);
 
-  document.querySelector('.nav__init-filter').addEventListener('click', clickInitFilter);
+  document
+    .querySelector(".nav__init-filter")
+    .addEventListener("click", clickInitFilter);
 
   // Catch a key pressed
-  document.querySelector('.dashboard__input').addEventListener("keyup", addTaskWithEnter);
-
-}
+  document
+    .querySelector(".dashboard__input")
+    .addEventListener("keyup", addTaskWithEnter);
+};
 
 //
 // Execute a function when the user releases a key on the keyboard
 //
 const addTaskWithEnter = (event) => {
-
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
     clickAddButton();
@@ -50,35 +52,39 @@ const addTaskWithEnter = (event) => {
 // Selects only those tasks that match the filter
 //
 const applyFilter = (event) => {
-
-  console.log('applyFilter');
+  console.log("applyFilter");
   console.log(event.target.value);
 
   // Removes all tasks from the dashboard
-  document.querySelector('.dashboard__list').innerHTML = '';
+  document.querySelector(".dashboard__list").innerHTML = "";
 
   if (event.target.value.length > 0) {
     const list = listTasks
-      .filter( (elem) => {return elem.text.toLowerCase().includes(event.target.value.toLowerCase())} )
-      .forEach((elem) => {displayTask(elem) } );
+      .filter((elem) => {
+        return elem.text
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase());
+      })
+      .forEach((elem) => {
+        displayTask(elem);
+      });
   } else {
     displayAllTasks();
   }
-}
+};
 
 const clickInitFilter = () => {
-  console.log('clickInitFilter');
-  
-  document.querySelector('.nav__input').value = '';
-  document.querySelector('.dashboard__list').innerHTML = '';
+  console.log("clickInitFilter");
+
+  document.querySelector(".nav__input").value = "";
+  document.querySelector(".dashboard__list").innerHTML = "";
   displayAllTasks();
-}
+};
 
 //
 // Click on the add button
 //
 const clickAddButton = () => {
-
   const $$input = document.querySelector(".dashboard__input");
   const text = $$input.value;
 
@@ -91,7 +97,7 @@ const clickAddButton = () => {
     indexTasks++;
     addTask(newTask);
     displayTask(newTask);
-    $$input.value = '';
+    $$input.value = "";
   }
 };
 
@@ -158,7 +164,9 @@ const clickCheckTask = (event) => {
   console.log(event);
 
   const taskId = event.path[1].id.substring(1);
-  document.querySelector(`#t${taskId}`).classList.add("dashboard__text--checked");
+  document
+    .querySelector(`#t${taskId}`)
+    .classList.add("dashboard__text--checked");
 
   const ind = searchListTasks(taskId);
   listTasks[ind].status = STATUS_OK;
@@ -184,32 +192,33 @@ const clickDelTask = (event) => {
 const clickEditTask = (event) => {
   console.log("clickEditTask");
   console.log(event);
-  
+
   const taskId = event.path[1].id.substring(1);
-  document.querySelector(".dashboard__input").value = listTasks[searchListTasks(taskId)].text;
+  document.querySelector(".dashboard__input").value =
+    listTasks[searchListTasks(taskId)].text;
   deleteTask(taskId);
-}
+};
 
 //
 // Delete a task by id
 //
 const deleteTask = (taskId) => {
-  console.log('deleteTask');
-  
+  console.log("deleteTask");
+
   // Remove the task from the dashboard
-  const $$task = document.querySelector(`#l${taskId}`)
+  const $$task = document.querySelector(`#l${taskId}`);
   $$task.remove();
-  
+
   // Delete the task
   listTasks.splice(searchListTasks(taskId), 1);
-  
+
   if (listTasks.length == 0) {
     indexTasks = 0;
   }
-  
+
   // Update localStorage
-  setLocalStorage();  
-}
+  setLocalStorage();
+};
 
 //
 // Search by id in listTasks array
@@ -224,9 +233,13 @@ const searchListTasks = (taskId) => {
 const setLocalStorage = () => {
   console.log("setLocalStorage");
 
-  if (typeof Storage !== "undefined") {
-    localStorage.setItem("listTasks", JSON.stringify(listTasks));
-    localStorage.setItem("indexTasks", indexTasks);
+  try {
+    if (typeof Storage !== "undefined") {
+      localStorage.setItem("listTasks", JSON.stringify(listTasks));
+      localStorage.setItem("indexTasks", indexTasks);
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -236,14 +249,18 @@ const setLocalStorage = () => {
 const getLocalStorage = () => {
   console.log("getLocalStorage");
 
-  if (typeof Storage !== "undefined") {
-    if (localStorage.indexTasks) {
-      indexTasks = Number(localStorage.indexTasks);
-      listTasks = JSON.parse(localStorage.listTasks);
+  try {
+    if (typeof Storage !== "undefined") {
+      if (localStorage.indexTasks) {
+        indexTasks = Number(localStorage.indexTasks);
+        listTasks = JSON.parse(localStorage.listTasks);
 
-      console.log("indexTasks ->", indexTasks);
-      console.log("listTasks ->", listTasks);
+        console.log("indexTasks ->", indexTasks);
+        console.log("listTasks ->", listTasks);
+      }
     }
+  } catch (error) {
+    console.error(error);
   }
 };
 
