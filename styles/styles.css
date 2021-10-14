@@ -214,16 +214,22 @@ a {
 }
 
 .dashboard__add {
-  margin: 0 1rem;
+  cursor: pointer;
   font-size: 2rem;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+  margin: 0 1rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__add {
+    font-size: 1.2rem;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .dashboard__add {
     margin: auto;
-    font-size: 1.2rem;
   }
 }
 
@@ -285,49 +291,68 @@ a {
 
 .dashboard__text--checked {
   background-color: #94f3a4;
+  text-decoration: line-through;
 }
 
 .dashboard__done {
-  color: #2d8e87;
+  cursor: pointer;
   font-size: 2rem;
-  margin-left: 0.5rem;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+  color: #2d8e87;
+  margin-left: 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__done {
+    font-size: 1.2rem;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .dashboard__done {
     margin-left: 0.3rem;
-    font-size: 1.2rem;
   }
 }
 
 .dashboard__del {
-  color: red;
+  cursor: pointer;
   font-size: 2rem;
-  margin: 0 0.5rem;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+  color: red;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__del {
+    font-size: 1.2rem;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .dashboard__del {
     margin: 0 0.3rem;
-    font-size: 1.2rem;
   }
 }
 
 .dashboard__edit {
+  cursor: pointer;
   font-size: 2rem;
-  margin: 0 0.5rem;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .dashboard__edit {
+    font-size: 1.2rem;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .dashboard__edit {
     margin: 0 0.3rem;
-    font-size: 1.2rem;
   }
 }
 

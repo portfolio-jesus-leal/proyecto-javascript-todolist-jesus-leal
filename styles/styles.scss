@@ -2,8 +2,10 @@
 
 // Custom Properties CSS
 // Variables definition
-$font-title: 'Fascinate Inline', cursive;
-$font-main: 'Lato', sans-serif;
+$font-title: 'Fascinate Inline',
+cursive;
+$font-main: 'Lato',
+sans-serif;
 $font-size                   : 1.2rem;
 $font-size-mobile            : 1rem;
 $btn-size                    : 2rem;
@@ -23,6 +25,19 @@ $desktop_breakpoint          : 1200px;
 $desktop_xl_breakpoint       : 1600px;
 
 //
+// Mixin
+//
+@mixin btn {
+    cursor             : pointer;
+    font-size          : $btn-size;
+    transition-duration: 0.3s;
+
+    @include mobile {
+        font-size: $btn-size-mobile;
+    }
+}
+
+//
 // Mixin for media query
 //
 @mixin mobile {
@@ -36,6 +51,8 @@ $desktop_xl_breakpoint       : 1600px;
         @content;
     }
 }
+
+
 
 a {
     text-decoration: none;
@@ -73,12 +90,12 @@ a {
     transition-duration: 0.2s;
 
     &__title {
-        font-family        : $font-title;
-        font-size          : 3rem;
-        margin             : 1rem;
-        padding            : 0 2rem;
-        text-align         : center;
-        text-shadow        : 0.3rem 0.3rem 0.3rem #000;
+        font-family: $font-title;
+        font-size  : 3rem;
+        margin     : 1rem;
+        padding    : 0 2rem;
+        text-align : center;
+        text-shadow: 0.3rem 0.3rem 0.3rem #000;
 
         @include mobile {
             font-size: 1.5rem;
@@ -90,7 +107,7 @@ a {
 
     &__title:hover {
         animation                : shake 0.5s;
-        animation-iteration-count: infinite;        
+        animation-iteration-count: infinite;
     }
 
     &__filter {
@@ -192,13 +209,11 @@ a {
     }
 
     &__add {
+        @include btn;
         margin             : 0 1rem;
-        font-size          : $btn-size;
-        transition-duration: 0.3s;
 
         @include mobile {
             margin   : auto;
-            font-size: $btn-size-mobile;
         }
     }
 
@@ -241,40 +256,35 @@ a {
 
     &__text--checked {
         background-color: $check-color;
+        text-decoration : line-through;
     }
 
     &__done {
+        @include btn;
         color              : #2d8e87;
-        font-size          : $btn-size;
         margin-left        : 0.5rem;
-        transition-duration: 0.3s;
 
         @include mobile {
             margin-left: 0.3rem;
-            font-size  : $btn-size-mobile;
         }
     }
 
     &__del {
+        @include btn;
         color              : red;
-        font-size          : $btn-size;
         margin             : 0 0.5rem;
-        transition-duration: 0.3s;
 
         @include mobile {
             margin   : 0 0.3rem;
-            font-size: $btn-size-mobile;
         }
     }
 
     &__edit {
-        font-size          : $btn-size;
+        @include btn;
         margin             : 0 0.5rem;
-        transition-duration: 0.3s;
 
         @include mobile {
             margin   : 0 0.3rem;
-            font-size: $btn-size-mobile;
         }
     }
 
